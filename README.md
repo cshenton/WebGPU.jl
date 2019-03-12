@@ -1,2 +1,68 @@
 # WebGPU.jl
 Julia bindings and native wrapper for the gfx webgpu implementation
+
+## Mapping the WGPU API
+
+- adapter
+    - create_device deviceid (adapterid, descriptor)
+- bind_group
+    - destroy (groupid)
+- buffer
+    - destroy (bufferid)
+    - map_read_async (bufferid, start, size, callback, data)
+    - map_write_async (bufferid, start, size, callback, data)
+    - set_sub_data (bufferid, start, count, data)
+    - unmap (bufferid)
+- command_buffer
+    - copy_buffer_to_buffer
+    - copy_buffer_to_texture
+    - copy_texture_to_buffer
+    - copy_texture_to_texture
+- command_encoder
+    - begin_compute_pass (encoderid)
+    - begin_render_pass (encoderid, renderpassdesc)
+    - finish (encoderid)
+- compute_pass
+    - dispatch (passid, x, y, z)
+    - end_pass (passid)
+    - set_bind_group (passid, index, groupid)
+    - set_pipeline (passid, pipelineid)
+- create_instance instanceid ()
+- device
+    - create_bind_group (deviceid, desc)
+    - create_bind_group_layout (deviceid, layourdesc)
+    - create_buffer (deviceid, bufferdesc)
+    - create_buffer_mapped (deviceid, bufferdesc, map)
+    - create_command_encoder (deviceid, desc)
+    - create_compute_pipeline (deviceid, desc)
+    - create_pipeline_layout (deviceid, desc)
+    - create_render_pipeline (deviceid, desc)
+    - create_sampler (deviceid, desc)
+    - create_shader ()
+    - create_swap_chain
+    - create_texture
+    - destroy
+    - get_queue
+- instance
+    - create_surface_from_macos_layer
+    - create_surface_from_windows_hwnd
+    - create_surface_from_xlib
+    - get_adaptor
+- queue
+    - submit
+- render_pass
+    - draw
+    - draw_indexed
+    - end_pass
+    - set_bind_group
+    - set_index_buffer
+    - set_pipeline
+    - set_vertex_buffers
+- swap_chain
+    - get_next_texture
+    - present
+- texture
+    - create_default_view
+    - create_view
+    - destroy
+    - view_destroy
